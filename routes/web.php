@@ -15,17 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/hello', function () {
-    return response('<h1>HELLO WORLD</h1>');
-});
-
-Route::get('/post/{id}', function ($id) {
-    return response('Post ' . $id);
-})->where('id','[0=9]+');
- 
-Route::get('/search',function(Request $request){
-    return $request->name.' '. $request->city;
+    return view('listings', [
+        'heading'  => 'Latest Listings',
+        'listings' => [
+            [
+                'id' => 1,
+                'title' => 'Listing One',
+                'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus aliquid esse molestiae rem ipsa eius facere consequatur rerum! Cumque tempora maxime dicta voluptatem perferendis ad numquam blanditiis quas adipisci ea?'
+            ],
+            [
+                'id' => 2,
+                'title' => 'Listing Two',
+                'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus aliquid esse molestiae rem ipsa eius facere consequatur rerum! Cumque tempora maxime dicta voluptatem perferendis ad numquam blanditiis quas adipisci ea?'
+            ]
+        ]
+    ]);
 });

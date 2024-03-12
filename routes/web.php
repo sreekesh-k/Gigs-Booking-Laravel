@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello',function(){
+Route::get('/hello', function () {
     return response('<h1>HELLO WORLD</h1>');
 });
 
+Route::get('/post/{id}', function ($id) {
+    return response('Post ' . $id);
+})->where('id','[0=9]+');
